@@ -36,3 +36,29 @@ const expander = function(){
 expander()
 
 // could be greater if it creates 5 songs instead unhide 5
+
+//---------------
+
+
+/* artistNode = document.getElementById("artistName")
+artistNode.addEventListener("click",function(){
+  gotTo()
+}) */
+
+
+
+const goTo = (artistID) =>{
+
+  
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`)
+  .then(resp=>resp.json())
+  .then(data=>{
+    console.log(data)
+    
+  })
+  .catch(err=>console.log(err))
+}
+
+window.onload = () =>{
+  goTo(412);
+}
