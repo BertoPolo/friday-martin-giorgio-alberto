@@ -14,7 +14,7 @@ window.onload = () => {
           <div>
           <img class="mt-3 img-card" src="${song[i].album.cover}" alt="Card image cap" />
           <div class="d-flex flex-column align-items-start p-0 mt-3 ml-1 justify-content-start">
-          <div class="card-title line-clamp2">${song[i].title_short}</div>
+          <div class="card-title line-clamp2">${song[i].album.title}</div>
           <p class="card-text mt-n2 line-clamp">${song[i].artist.name}</p>
           </div>
           </div>
@@ -50,7 +50,7 @@ window.onload = () => {
           <div>
           <img class="mt-3 img-card" src="${song[i].album.cover}" alt="Card image cap" />
           <div class="d-flex flex-column align-items-start p-0 mt-3 ml-1 justify-content-start">
-          <div class="card-title line-clamp2">${song[i].title_short}</div>
+          <div class="card-title line-clamp2">${song[i].album.title}</div>
           <p class="card-text mt-n2 line-clamp">${song[i].artist.name}</p>
           </div>
           </div>
@@ -86,7 +86,7 @@ window.onload = () => {
           <div>
           <img class="mt-3 img-card" src="${song[i].album.cover}" alt="Card image cap" />
           <div class="d-flex flex-column align-items-start p-0 mt-3 ml-1 justify-content-start">
-          <div class="card-title line-clamp2">${song[i].title_short}</div>
+          <div class="card-title line-clamp2">${song[i].album.title}</div>
           <p class="card-text mt-n2 line-clamp">${song[i].artist.name}</p>
           </div>
           </div>
@@ -101,6 +101,21 @@ window.onload = () => {
       
       
       songs3()
+
+      
+      
+    })
+    .catch(err => console.error(err))
+
+    fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=madonna', {})
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      
+
+      
+      
+      
 
       
       
