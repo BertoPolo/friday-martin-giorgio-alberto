@@ -44,14 +44,22 @@ expander()
 
 
 const fillingData = function(data){
-  const artistNode = document.getElementById("artistName")
+
+  const artistNode = document.getElementsByClassName("artistName")
+  for(let i =0;i<artistNode.length;i++){
+    artistNode[i].innerText= data.name
+  }
+
+  const artistPickImgNode = document.getElementsByClassName("artistPickImg")
+  for(let i =0;i<artistPickImgNode.length;i++){
+    artistPickImgNode[i].src= data.picture_small
+  }
+
   const listenersNode = document.getElementById("listeners")
   const artistContainerNode = document.querySelector(".artist-name-container")
-  const artistPickImgNode = document.getElementById("artistPickImg")
-  artistNode.innerText= data.name
+
   listenersNode.innerText= data.nb_fan
   artistContainerNode.style.backgroundImage = `url(${data.picture_big})`
-  artistPickImgNode.src= data.picture_small
   
 }
 
@@ -128,8 +136,8 @@ const goTo = (artistID) =>{
 
 window.onload = () =>{
 
-  goTo(413);
-  fetchSongs(413);
+  goTo(415);
+  fetchSongs(415);
   mouseoverSong()
 }
 
