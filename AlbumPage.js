@@ -63,12 +63,14 @@ const getAlbumDetails = function (obj) {
                                 <h6 class="albumWord">${obj.type}</h6>
                                 <h2 class="albumTitle ">${obj.title}</h2>
                                 <h6 >
-                                    <img class="rounded-circle img-fluid bandLogo" src="https://www.aqueenofmagic.com/wp-content/uploads/2020/12/Queen-mid-70s-approved-photo-04-web-optimised-1000.jpg" alt="Band Logo">
-                                    <span class="text-muted infoAlbum"> <span class="text-white">${obj.artist.name}</span>  · ${obj.release_date} · ${obj.nb_tracks} songs · ${durationToMinsAndSecs}</span>
+                                   <span id="artist-link"> <img class="rounded-circle img-fluid bandLogo" src=${obj.artist.picture_small} alt="Band Logo">
+                                    <span class="text-muted infoAlbum"> <span class="text-white">${obj.artist.name}</span></span>  · ${obj.release_date} · ${obj.nb_tracks} songs · ${durationToMinsAndSecs}</span>
                                 </h6>
                             </div>
   `;
-
+  let artistLink = document.getElementById("artist-link");
+  artistLink.onclick = () =>
+    window.location.assign("./ArtistPage.html?artistID=" + obj.artist.id);
 }
 
 const getAlbumSongs = function (obj) {

@@ -428,3 +428,10 @@ a:visited,
 a:active {
   text-decoration: none;
 }
+
+
+/* MARTIN's Style */
+
+.clickable:hover {
+  cursor: pointer;
+}

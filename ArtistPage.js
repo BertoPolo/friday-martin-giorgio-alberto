@@ -1,3 +1,13 @@
+/* GLOBAL VARIABLES */
+
+ const searchParams = new URLSearchParams(window.location.search);
+ const artistID = searchParams.get("artistID");
+
+/* GLOBAL VARIABLES END */
+
+
+
+
 const mouseoverSong = function () {
   songNode = document.getElementsByClassName('song')
   numNode = document.getElementsByClassName('listNumber')
@@ -44,14 +54,22 @@ expander()
 
 
 const fillingData = function(data){
-  const artistNode = document.getElementById("artistName")
+
+  const artistNode = document.getElementsByClassName("artistName")
+  for(let i =0;i<artistNode.length;i++){
+    artistNode[i].innerText= data.name
+  }
+
+  const artistPickImgNode = document.getElementsByClassName("artistPickImg")
+  for(let i =0;i<artistPickImgNode.length;i++){
+    artistPickImgNode[i].src= data.picture_small
+  }
+
   const listenersNode = document.getElementById("listeners")
   const artistContainerNode = document.querySelector(".artist-name-container")
-  const artistPickImgNode = document.getElementById("artistPickImg")
-  artistNode.innerText= data.name
+
   listenersNode.innerText= data.nb_fan
   artistContainerNode.style.backgroundImage = `url(${data.picture_big})`
-  artistPickImgNode.src= data.picture_small
   
 }
 
@@ -95,13 +113,13 @@ const putSongs = function(obj){
 }
 
 
-const fetchSongs = (artistID) =>{
+const fetchSongs = (artistID = 413) =>{
 
   
   fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}/top?limit=50`)
   .then(resp=>resp.json())
   .then(data=>{
-    console.log("Fetchsongs:^")
+    console.log("Fetchsongs:")
     console.log(data)
     putSongs(data);
     
@@ -112,24 +130,27 @@ const fetchSongs = (artistID) =>{
 
 
 
-const goTo = (artistID) =>{
-
-  
+const goTo = (artistID = 413) => {
   fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`)
-  .then(resp=>resp.json())
-  .then(data=>{
-    console.log(data)
-    fillingData(data)
-
-    
-  })
-  .catch(err=>console.log(err))
-}
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      fillingData(data);
+    })
+    .catch((err) => console.log(err));
+};
 
 window.onload = () =>{
+<<<<<<< HEAD
+ 
+  
+  goTo(artistID);
+  fetchSongs(artistID);
+=======
 
-  goTo(413);
-  fetchSongs(413);
+  goTo(415);
+  fetchSongs(415);
+>>>>>>> 84944b9376f96126068f7211a73facd25965d031
   mouseoverSong()
 }
 
