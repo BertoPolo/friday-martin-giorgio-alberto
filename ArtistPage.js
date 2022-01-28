@@ -40,15 +40,28 @@ expander()
 //---------------
 
 
-/* artistNode = document.getElementById("artistName")
+/* 
 artistNode.addEventListener("click",function(){
   gotTo()
 }) */
 
 //change dynamically :
-//artist name
+//artist name id="artistName"
 //monthly listeners "nb_fan"   id="listeners"
-//background artist,,, is on css, how to change  it
+//background artist,,, 
+//artist pick img  id . artistPickImg
+
+const fillingData = function(data){
+  const artistNode = document.getElementById("artistName")
+  const listenersNode = document.getElementById("listeners")
+  const artistContainerNode = document.querySelector(".artist-name-container")
+  const artistPickImgNode = document.getElementById("artistPickImg")
+  artistNode.innerText= data.name
+  listenersNode.innerText= data.nb_fan
+  artistContainerNode.style.backgroundImage = `url(${data.picture_big})`
+  artistPickImgNode.src= data.picture_small
+}
+
 
 const goTo = (artistID) =>{
 
@@ -57,6 +70,7 @@ const goTo = (artistID) =>{
   .then(resp=>resp.json())
   .then(data=>{
     console.log(data)
+    fillingData(data)
     
   })
   .catch(err=>console.log(err))
