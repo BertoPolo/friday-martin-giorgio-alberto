@@ -47,8 +47,8 @@ artistNode.addEventListener("click",function(){
 
 //change dynamically :
 //artist name
-//monthly listeners
-//background artist
+//monthly listeners "nb_fan"   id="listeners"
+//background artist,,, is on css, how to change  it
 
 const goTo = (artistID) =>{
 
