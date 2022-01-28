@@ -140,17 +140,10 @@ const goTo = (artistID = 413) => {
     .catch((err) => console.log(err));
 };
 
-window.onload = () =>{
-<<<<<<< HEAD
- 
+window.onload = () =>{ 
   
   goTo(artistID);
   fetchSongs(artistID);
-=======
-
-  goTo(415);
-  fetchSongs(415);
->>>>>>> 84944b9376f96126068f7211a73facd25965d031
   mouseoverSong()
 }
 
