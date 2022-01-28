@@ -7,9 +7,9 @@
 
 /*FETCH FUNCTIONS  */
 
-const fetchOnLoad = function () {
+const fetchOnLoad = function (search = "madonna") {
   fetch(
-    "https://striveschool-api.herokuapp.com/api/deezer/search?q=madonna",
+    `https://striveschool-api.herokuapp.com/api/deezer/search?q=${search}`,
     {}
   )
     .then((res) => res.json())
@@ -21,33 +21,31 @@ const fetchOnLoad = function () {
     .catch((err) => console.error(err));
   }
 
-  const fetchOnLoad2 = function () {
+  const fetchOnLoad2 = function (search = "eminem") {
     fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem",
+      `https://striveschool-api.herokuapp.com/api/deezer/search?q=${search}`,
       {}
     )
       .then((res) => res.json())
       .then((data) => {
         songs2(data);
-  
       })
-  
-      .catch((err) => console.error(err));
-    }
 
-    const fetchOnLoad3 = function () {
+      .catch((err) => console.error(err));
+  };
+
+    const fetchOnLoad3 = function (search = "queen") {
       fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen",
+        `https://striveschool-api.herokuapp.com/api/deezer/search?q=${search}`,
         {}
       )
         .then((res) => res.json())
         .then((data) => {
           songs3(data);
-    
         })
-    
+
         .catch((err) => console.error(err));
-      }
+    };
   
   
   /*FETCH FUNCTIONS END  */
@@ -61,6 +59,8 @@ const fetchOnLoad = function () {
       console.log(song);
   
       const madonnaContainer = document.querySelector(".home-container");
+      madonnaContainer.innerHTML = " ";
+
       for (let i = 0; i < 8; i++) {
         let newAnchor = document.createElement("a");
         
@@ -87,6 +87,7 @@ const fetchOnLoad = function () {
       console.log(song);
   
       const eminemContainer = document.querySelector(".home-container2");
+      eminemContainer.innerHTML = " ";
       for (let i = 0; i < 8; i++) {
         let newAnchor = document.createElement("a");
         
@@ -113,6 +114,7 @@ const fetchOnLoad = function () {
       console.log(song);
   
       const queenContainer = document.querySelector(".home-container3");
+      queenContainer.innerHTML = " ";
       for (let i = 0; i < 8; i++) {
         let newAnchor = document.createElement("a");
         
@@ -135,12 +137,26 @@ const fetchOnLoad = function () {
     };
   
   
-  
+  const getSearchQuery = function(str) {
+    console.log(str);
+    let searchQuery = str.toLowerCase();
+    fetchOnLoad(searchQuery);    
+    fetchOnLoad2(searchQuery);    
+    fetchOnLoad3(searchQuery);    
+
+
+  } 
   
   
   /* LOADING FUNCTIONS END */
   
-  
+  /* EVENT LISTENERS */
+
+  let searchInput = document.getElementById("search-input");
+  searchInput.addEventListener("change", () => getSearchQuery(searchInput.value));  
+  /* EVENT LISTENERS END */
+
+
   
   /* ONLOAD  FUNCTIONS */
   
