@@ -42,6 +42,7 @@ expander()
 
 
 
+
 const fillingData = function(data){
   const artistNode = document.getElementById("artistName")
   const listenersNode = document.getElementById("listeners")
@@ -110,6 +111,7 @@ const fetchSongs = (artistID) =>{
 
 
 
+
 const goTo = (artistID) =>{
 
   
@@ -118,14 +120,17 @@ const goTo = (artistID) =>{
   .then(data=>{
     console.log(data)
     fillingData(data)
+
     
   })
   .catch(err=>console.log(err))
 }
 
 window.onload = () =>{
+
   goTo(413);
   fetchSongs(413);
   mouseoverSong()
 }
+
 

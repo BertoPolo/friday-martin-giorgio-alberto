@@ -1,11 +1,14 @@
 /* GLOBAL VARIABLES */
 
+const searchParams = new URLSearchParams(window.location.search);
+const id = searchParams.get("albumID");
+
 /* GLOBAL VARIABLES END */
 
 /* FETCH FUNCTIONS */
 
 const fetchAlbum = function () {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/401032", {
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${id}`, {
     method: "GET",
   })
     .then((response) => response.json())
