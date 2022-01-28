@@ -20,7 +20,7 @@ const mouseoverSong = function () {
     })
   }
 }
-mouseoverSong()
+
 
 const expander = function(){
   const seeMoreNode = document.querySelector(".seeMore")
@@ -40,17 +40,6 @@ expander()
 //---------------
 
 
-/* 
-artistNode.addEventListener("click",function(){
-  gotTo()
-}) */
-
-//change dynamically :
-//artist name id="artistName"
-//monthly listeners "nb_fan"   id="listeners"
-//background artist,,, 
-//artist pick img  id . artistPickImg
-//songs
 
 
 const fillingData = function(data){
@@ -62,45 +51,64 @@ const fillingData = function(data){
   listenersNode.innerText= data.nb_fan
   artistContainerNode.style.backgroundImage = `url(${data.picture_big})`
   artistPickImgNode.src= data.picture_small
-  const songNode = document.getElementsByClassName("song")
-  songNode.innerHTML = ` 
+  
+}
 
-  <div class="row song hiddenSong">
-  <div class="col-md-6 d-flex align-items-center">
-    <span class="listNumber text-muted">10</span>
-    <img
-      src="${data.picture_small}"
-      alt=""
-      class="ml-2"
-    />
-    <p class="pl-3 m-0 text-white">
-      ${data.}<br />
-    </p>
-  </div>
-  <div
-    class="col-md-3 d-flex justify-content-center align-items-center"
-  >
-    <div>
-      <span class="text-muted text-right">705,225,721</span>
+const putSongs = function(obj){
+  let arr = obj.data;
+  const songListNode = document.getElementById("songs-list");
+  songListNode.innerHTML = " ";
+  
+  for(let i = 0; i < arr.length; i++) {
+    let duration= Math.floor(arr[i].duration / 60)
+    songListNode.innerHTML += ` 
+
+    <div class="row song">
+    <div class="col-md-6 d-flex align-items-center">
+      <span class="listNumber text-muted">${i+1}</span>
+      <img
+        src="${arr[i].album.cover_small}"
+        alt=""
+        class="ml-2"
+      />
+      <p class="pl-3 m-0 text-white">
+        ${arr[i].title}<br />
+      </p>
     </div>
-  </div>
-  <div class="col-md-3 d-flex align-items-center">
-    <i class="bi bi-heart hidden heartSong pr-1"></i>
-    <span class="text-muted time px-3">2:02</span>
-    <i class="bi bi-three-dots hidden threeDotsSong text-muted"></i>
-  </div>
-  </div>
-  `
-
-
-
-
+    <div
+      class="col-md-3 d-flex justify-content-center align-items-center"
+    >
+      <div>
+        <span class="text-muted text-right">${arr[i].rank}</span>
+      </div>
+    </div>
+    <div class="col-md-3 d-flex align-items-center">
+      <i class="bi bi-heart hidden heartSong pr-1"></i>
+      <span class="text-muted time px-3">${duration}</span>
+      <i class="bi bi-three-dots hidden threeDotsSong text-muted"></i>
+    </div>
+    </div>
+    `
+  }
+ 
 }
 
 
-/* const artistIntroducer = function(){
+const fetchSongs = (artistID) =>{
 
-} */
+  
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}/top?limit=50`)
+  .then(resp=>resp.json())
+  .then(data=>{
+    console.log("Fetchsongs:^")
+    console.log(data)
+    putSongs(data);
+    
+  })
+  .catch(err=>console.log(err))
+}
+
+
 
 const goTo = (artistID) =>{
 
@@ -116,6 +124,8 @@ const goTo = (artistID) =>{
 }
 
 window.onload = () =>{
-  goTo(412);
+  goTo(413);
+  fetchSongs(413);
+  mouseoverSong()
 }
 
