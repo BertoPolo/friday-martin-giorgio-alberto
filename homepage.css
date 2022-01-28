@@ -157,6 +157,9 @@ body {
   margin: 0;
   padding: 0;
 }
+.main-section{
+  overflow: scroll
+}
 
 .navbar {
   background-color: rgba(59, 4, 16, 0.981) !important;
@@ -297,6 +300,14 @@ body {
 .home-container {
   padding-top: 18px;
 }
+
+.home-container2 {
+  padding-top: 18px;
+}
+
+.home-container3 {
+  padding-top: 18px;
+}
 .card-container {
   width: 175px;
   height: 260px;
@@ -313,6 +324,7 @@ body {
   transition: all 0.4s ease-out;
 }
 .card-container:hover {
+ 
   background: rgba(64, 64, 64, 0.61);
   background-color: radial-gradient(
     circle,

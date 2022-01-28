@@ -15,8 +15,7 @@ const fetchOnLoad = function () {
     .then((res) => res.json())
     .then((data) => {
       songs(data);
-      
-      
+     
     })
     .catch((err) => console.error(err));
 }
@@ -57,14 +56,6 @@ const fetchOnLoad = function () {
 
 
 
-/* showTitles = () => {
-        const innerModal = document.querySelector('.modal-body')
-        console.log(innerModal)
-        const song = data.data
-        for (let i = 0; i < song.length; i++) {
-          innerModal.innerHTML += `<span> ${song[i].title_short} <br></span>`
-        }
-      } */
 
 /* LOADING FUNCTIONS END */
 
@@ -74,12 +65,10 @@ const fetchOnLoad = function () {
 
 window.onload = () => {
   fetchOnLoad();
-    
-}
+=======
+      }
 
-
-
-
+     
      
      
         
