@@ -5,17 +5,17 @@
 /* FETCH FUNCTIONS */
 
 const fetchAlbum = function () {
-  fetch('https://striveschool-api.herokuapp.com/api/deezer/album/75621062', {
-      method: 'GET',
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/401032", {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
       getAlbumDetails(data);
       getAlbumSongs(data);
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error("Error:", error);
     });
   }
 /* FETCH FUNCTIONS END */
@@ -55,7 +55,7 @@ const getAlbumDetails = function (obj) {
   let durationToMinsAndSecs =
     Math.floor(obj.duration / 60) + " min " + obj.duration % 60 + " sec";  ;
   console.log(durationToMinsAndSecs);
-  albumContainer.innerHTML = `<img class="img-fluid d-inline-flex" width="200px" src=${obj.cover_medium} alt="albumPhoto">
+  albumContainer.innerHTML = `<a href="${obj.link}"><img class="img-fluid d-inline-flex" width="200px" src=${obj.cover_medium} alt="albumPhoto"></a>
                               <div class="ml-3">
                                 <h6 class="albumWord">${obj.type}</h6>
                                 <h2 class="albumTitle ">${obj.title}</h2>
@@ -85,7 +85,7 @@ const getAlbumSongs = function (obj) {
                     <span class="listNumber">${i++}</span>
                     <p class="pl-3 text-white">
                       ${element.title} <br/>
-                      <span class="text-muted">Queen</span>
+                      <span class="text-muted">${obj.artist.name}</span>
                     </p>
                   </div>
                   <div>
