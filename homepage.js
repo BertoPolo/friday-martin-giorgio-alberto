@@ -47,7 +47,7 @@ const fetchOnLoad = function () {
 
 const takeMeToAlbum = function(e) {
   e.preventDefault();   
-  console.log(e.target)
+  console.log(e.target.id)
 }
 
 
