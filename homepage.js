@@ -8,7 +8,7 @@ window.onload = () => {
         const madonnaContainer = document.querySelector('.home-container')
           for (let i = 0; i < 8; i++) {
           madonnaContainer.innerHTML += `
-          <a class="col" href="">
+          <a  href="">
           <div class="card-container position-relative d-flex justify-content-center">
           <img src="assets/playhoverbtn.png" class="playhover2" alt="" />
           <div>
@@ -44,7 +44,7 @@ window.onload = () => {
         const eminemContainer = document.querySelector('.home-container2')
           for (let i = 0; i < 8; i++) {
           eminemContainer.innerHTML += `
-          <a class="col" href="">
+          <a  href="">
           <div class="card-container position-relative d-flex justify-content-center">
           <img src="assets/playhoverbtn.png" class="playhover2" alt="" />
           <div>
@@ -80,7 +80,7 @@ window.onload = () => {
         const queenContainer = document.querySelector('.home-container3')
           for (let i = 0; i < 8; i++) {
           queenContainer.innerHTML += `
-          <a class="col" href="">
+          <a  href="">
           <div class="card-container position-relative d-flex justify-content-center">
           <img src="assets/playhoverbtn.png" class="playhover2" alt="" />
           <div>
