@@ -63,6 +63,7 @@ const fetchOnLoad = function (search = "madonna") {
 
       for (let i = 0; i < 8; i++) {
         let newAnchor = document.createElement("a");
+        newAnchor.classList.add("clickable");
         
         newAnchor.innerHTML = `
             <div class="card-container position-relative d-flex justify-content-center">
@@ -90,6 +91,7 @@ const fetchOnLoad = function (search = "madonna") {
       eminemContainer.innerHTML = " ";
       for (let i = 0; i < 8; i++) {
         let newAnchor = document.createElement("a");
+        newAnchor.classList.add("clickable");
         
         newAnchor.innerHTML = `
             <div class="card-container position-relative d-flex justify-content-center">
@@ -117,6 +119,7 @@ const fetchOnLoad = function (search = "madonna") {
       queenContainer.innerHTML = " ";
       for (let i = 0; i < 8; i++) {
         let newAnchor = document.createElement("a");
+        newAnchor.classList.add("clickable");
         
         newAnchor.innerHTML = `
             <div class="card-container position-relative d-flex justify-content-center">

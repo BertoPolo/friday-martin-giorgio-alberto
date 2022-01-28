@@ -230,3 +230,12 @@
   border-radius: 50px;
   background-color: lightgray;
 }
+
+
+/* MARTIN's STYLES */
+
+#artist-link:hover {
+  cursor: pointer;
+}
+
+/* MARTIN's STYLES END */

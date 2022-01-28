@@ -1,3 +1,13 @@
+/* GLOBAL VARIABLES */
+
+ const searchParams = new URLSearchParams(window.location.search);
+ const artistID = searchParams.get("artistID");
+
+/* GLOBAL VARIABLES END */
+
+
+
+
 const mouseoverSong = function () {
   songNode = document.getElementsByClassName('song')
   numNode = document.getElementsByClassName('listNumber')
@@ -103,13 +113,13 @@ const putSongs = function(obj){
 }
 
 
-const fetchSongs = (artistID) =>{
+const fetchSongs = (artistID = 413) =>{
 
   
   fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}/top?limit=50`)
   .then(resp=>resp.json())
   .then(data=>{
-    console.log("Fetchsongs:^")
+    console.log("Fetchsongs:")
     console.log(data)
     putSongs(data);
     
@@ -120,24 +130,22 @@ const fetchSongs = (artistID) =>{
 
 
 
-const goTo = (artistID) =>{
-
-  
+const goTo = (artistID = 413) => {
   fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`)
-  .then(resp=>resp.json())
-  .then(data=>{
-    console.log(data)
-    fillingData(data)
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      fillingData(data);
+    })
+    .catch((err) => console.log(err));
+};
 
-    
-  })
-  .catch(err=>console.log(err))
-}
 
-window.onload = () =>{
+window.onload = () =>{ 
+  
+  goTo(artistID);
+  fetchSongs(artistID);
 
-  goTo(415);
-  fetchSongs(415);
   mouseoverSong()
 }
 
