@@ -69,7 +69,34 @@ const getAlbumDetails = function (obj) {
 }
 
 const getAlbumSongs = function (obj) {
+  let songsContainer = document.getElementById("songList");
+  let arrayOfSongsInAlbum = obj.tracks.data;
+  console.log(arrayOfSongsInAlbum);
+  songsContainer.innerHTML = " ";
+  let i = 1;
   
+  arrayOfSongsInAlbum.forEach((element) => {
+    let newDiv = document.createElement("div");
+    let durationToMinsAndSecs =
+      Math.floor(element.duration / 60) + " : " + (element.duration % 60);
+    newDiv.innerHTML = `
+                <div class="pl-2 song d-flex justify-content-between">
+                  <div class="d-flex">
+                    <span class="listNumber">${i++}</span>
+                    <p class="pl-3 text-white">
+                      ${element.title} <br/>
+                      <span class="text-muted">Queen</span>
+                    </p>
+                  </div>
+                  <div>
+                    <i class="bi bi-heart hidden heartSong"></i>
+                    <span class="text-muted px-3" >${durationToMinsAndSecs}</span>
+                    <i class="bi bi-three-dots hidden threeDotsSong"></i>
+                  </div>
+                </div>`;
+    songsContainer.appendChild(newDiv);
+  });
+
 }
 /* OTHER FUNCTIONS END */
 
