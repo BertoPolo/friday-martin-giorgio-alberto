@@ -5,7 +5,7 @@
 /* FETCH FUNCTIONS */
 
 const fetchAlbum = function () {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/401032", {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/82006", {
     method: "GET",
   })
     .then((response) => response.json())
