@@ -140,10 +140,12 @@ const goTo = (artistID = 413) => {
     .catch((err) => console.log(err));
 };
 
+
 window.onload = () =>{ 
   
   goTo(artistID);
   fetchSongs(artistID);
+
   mouseoverSong()
 }
 
